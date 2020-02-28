@@ -12,28 +12,45 @@ function playVid() {
 	console.log(video)
 } 
 
-function pauseVid() {
-	 
+function pauseVid() {	 
 	video.pause();
 	console.log("Pause Video");
 } 
 
 function decreaseSpeed() { 
 	var vid = document.getElementById("myVideo");
-	vid.playbackRate -= 0.2;
-  	console.log("Speed is " + video.playbackRate);
+		if (vid.playbackRate > 0.06871947673600004){
+			vid.playbackRate *= .8;
+		}
+		else{
+			vid.playbackRate = 1.0;
+		}
+		if (video.ended == true){
+			vid.playbackRate = 1.0;
+		}
+		console.log("Speed is " + (vid.playbackRate));
 } 
 
 function increaseSpeed() {
-	var vid1= document.getElementById("myVideo");
-	vid1.playbackRate +=1.25
-	console.log("Speed is "+ video.playbackRate);
+	var vid= document.getElementById("myVideo");
+		if (vid.playbackRate < 14.551915228366852){
+			vid.playbackRate *= 1.25;
+		}
+		else{
+			vid.playbackRate = 1.0
+		}
+		if (video.ended == true){
+			vid.playbackRate = 1.0;
+		}
+	console.log("Speed is "+ (vid.playbackRate));
 } 
 
 function skipAhead() {
 	var vid2= document.getElementById("myVideo");
 	vid2.currentTime += 60;
 	if (video.ended == true){
+		video.currentTime = 0;
+		vid2.playbackRate = 1.0;
 		video.play()
 	}
 	console.log("Current location is "+ video.currentTime);
@@ -63,11 +80,14 @@ function changeVolume() {
        
 //https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_filter//
 function gray() { 
-	color_gray = document.body.style.filter = "grayscale(100%)";
+	var gray = document.getElementById("myVideo");
+	gray.classList.add("grayscale");
+	// color_gray = document.body.style.filter('grayscale=1');
 	console.log("In grayscale");
 }
 
 function color() {
-	in_color = document.body.style.filter = "grayscale(0%)";
+	var gray = document.getElementById("myVideo");
+	gray.classList.remove("grayscale");
 	console.log("In color");
 }
