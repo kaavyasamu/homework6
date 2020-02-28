@@ -40,10 +40,10 @@ function increaseSpeed() {
 } 
 
 function skipAhead() {
-	if (video.currentTime + 60 > video.length){
+	if (video.ended == true){
 		video.currentTime = 0;
-		video.playbackRate == 1;
-		video.pause()
+		video.play();
+		video.playbackRate = 1;
 	}
 	else{
 		video.currentTime +=60;
