@@ -25,9 +25,6 @@ function decreaseSpeed() {
 		else{
 			vid.playbackRate = 1.0;
 		}
-		if (video.ended == true){
-			vid.playbackRate = 1.0;
-		}
 		console.log("Speed is " + (vid.playbackRate));
 } 
 
@@ -39,19 +36,17 @@ function increaseSpeed() {
 		else{
 			vid.playbackRate = 1.0
 		}
-		if (video.ended == true){
-			vid.playbackRate = 1.0;
-		}
 	console.log("Speed is "+ (vid.playbackRate));
 } 
 
 function skipAhead() {
-	var vid2= document.getElementById("myVideo");
-	vid2.currentTime += 60;
-	if (video.ended == true){
+	if (video.currentTime + 60 > video.length){
 		video.currentTime = 0;
-		vid2.playbackRate = 1.0;
-		video.play()
+		video.playbackRate == 1;
+		video.pause()
+	}
+	else{
+		video.currentTime +=60;
 	}
 	console.log("Current location is "+ video.currentTime);
 } 
